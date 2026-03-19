@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRIC-X | Futuristic Cricket Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">CX</div>
+                <h1>CRIC-<span>X</span></h1>
+            </div>
+
+            <form id="playerForm">
+                <div class="form-section">
+                    <label>IDENTITY</label>
+                    <input type="text" id="playerName" class="cyber-input" placeholder="Player Name" required>
+                </div>
+
+                <div class="form-section">
+                    <label>ROLE</label>
+                    <select id="playerRole" class="cyber-input" required>
+                        <option value="BATSMAN">Batsman</option>
+                        <option value="BOWLER">Bowler</option>
+                        <option value="ALL-ROUNDER">All-Rounder</option>
+                        <option value="WICKET-KEEPER">Wicket-Keeper</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <label>GLOBAL RANKING</label>
+                    <div class="input-row">
+                        <input type="number" id="batRank" class="cyber-input" placeholder="Batting #" required>
+                        <input type="number" id="bowlRank" class="cyber-input" placeholder="Bowling #" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label>BATTING DATA</label>
+                    <div class="input-row">
+                        <input type="number" id="runs" class="cyber-input" placeholder="Runs">
+                        <input type="number" id="innings" class="cyber-input" placeholder="Inn.">
+                        <input type="number" id="batOvers" class="cyber-input" placeholder="Overs Faced" step="0.1">
+                        <input type="number" id="highestScore" class="cyber-input" placeholder="Highest Score">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label>BOWLING DATA</label>
+                    <div class="input-row">
+                        <input type="number" id="wickets" class="cyber-input" placeholder="Wkts">
+                        <input type="number" id="overs" class="cyber-input" placeholder="Overs" step="0.1">
+                        <input type="number" id="runsConceded" class="cyber-input" placeholder="Runs Conc.">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-glow">INITIALIZE DATA</button>
+            </form>
+
+            <div class="system-actions">
+                <label>SYSTEM CONTROLS</label>
+                <div class="action-grid">
+                    <button id="exportBtn" class="btn-outline">EXPORT DB</button>
+                    <button id="importBtn" class="btn-outline">IMPORT DB</button>
+                    <input type="file" id="importFile" style="display:none" accept=".json">
+                    <button id="clearBtn" class="btn-danger">WIPE ALL DATA</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav">
+                <div class="search-box">
+                    <input type="text" id="searchBar" class="cyber-input" placeholder="Search Database...">
+                    <select id="sortSelect" class="cyber-input sort-dropdown">
+                        <option value="name">Sort by Name</option>
+                        <option value="runs">Sort by Runs</option>
+                        <option value="wickets">Sort by Wickets</option>
+                        <option value="rating">Sort by Power Rating</option>
+                    </select>
+                </div>
+                <div class="global-metrics">
+                    <div class="metric">DATABASE: <span id="count" class="highlight">0</span> PLAYERS</div>
+                </div>
+            </header>
+
+            <div id="playerDisplay" class="player-grid">
+                <!-- Player cards will be injected here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>MODIFY PARAMETERS</h2>
+                <button onclick="window.closeModal()" class="close-btn">&times;</button>
+            </div>
+            <div id="editFormContainer"></div>
+            <button onclick="window.updatePlayer()" class="btn-glow">APPLY CHANGES</button>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script type="module" src="/script.js"></script>
+</body>
+</html>
