@@ -110,8 +110,8 @@ function render(filter = "") {
         const econ = p.overs > 0 ? (p.conc / p.overs).toFixed(2) : "0.00";
         
         const rating = calculateRating(p);
-        let ratingTier = rating > 250 ? 'LEGEND' : rating > 150 ? 'ELITE' : rating > 80 ? 'PRO' : 'ROOKIE';
-        let tierColor = rating > 250 ? '#eab308' : rating > 150 ? '#a855f7' : rating > 80 ? '#22d3ee' : '#94a3b8';
+        let ratingTier = rating > 600 ? 'LEGEND' : rating > 400 ? 'STAR' : rating > 150 ? 'ELITE' : rating > 70 ? "PRO": 'ROOKIE';
+        let tierColor = rating > 600 ? '#eab308' : rating > 400 ? '#a855f7' : rating > 150 ? '#22d3ee' : rating > 70 ? '#22d300' :'#94a3b8';
 
         const card = document.createElement('div');
         card.className = 'player-card';
